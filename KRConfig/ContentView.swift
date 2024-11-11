@@ -64,7 +64,6 @@ struct ContentView: View {
                 .onReceive(readerListModel.errorPublisher) { error in
                     errorHandling.handle(error: error)
                 }
-                
         }
     }
 }
