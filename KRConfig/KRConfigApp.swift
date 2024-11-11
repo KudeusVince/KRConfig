@@ -12,6 +12,8 @@ struct KRConfigApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .errorHandling()
+                .alertHandling()
         }
     }
 }
