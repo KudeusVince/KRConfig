@@ -79,13 +79,8 @@ struct SharedFormView<Content:View>: View {
             .navigationBarItems(leading: CloseBtn())
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    CustomAlertBtn(alertTitle: BLEReaderProperties.deviceName.title, placeholder: BLEReaderProperties.deviceName.title, action: { deviceName in
+                    BLENameSetterBtn(name: readerSettings.deviceName.isEmpty ? "NO NAME" : readerSettings.deviceName) { deviceName in
                         readerSettings.deviceName = deviceName
-                        readerManager.characteristicSetter(.deviceName(deviceName))
-                    }) {
-                        Text(readerSettings.deviceName)
-                            .fontWeight(.semibold)
-                            .contentShape(Rectangle())
                     }
                 }
             }
@@ -100,6 +95,9 @@ struct SharedFormView<Content:View>: View {
                         ProgressView()
                     }
             }
+        }
+        .onChange(of: readerSettings.deviceName) { _, newValue in
+            readerManager.characteristicSetter(.deviceName(newValue))
         }
     }
     

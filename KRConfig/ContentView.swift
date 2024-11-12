@@ -38,7 +38,7 @@ struct ContentView: View {
                         .fixedSize()
                     }
                 }
-                .sheet(item: $cbPeripheral) { cbPeripheral in
+                .fullScreenCover(item: $cbPeripheral) { cbPeripheral in
                     ReaderContainerView(cbPeripheral,
                                         bleReaderType: selection,
                                         properties: selection.adminProperties,
