@@ -16,8 +16,6 @@ struct ContentView: View {
     @State private var cbPeripheral: CBPeripheral?
     @State private var selection: BLEReaderType = .deskReader
     
-    private let ADMINPASS = "Admin@Kudeus"
-    
     init() {
         readerListModel = ReaderListModel(services: [Services.service_device_settings.uuid,
                                                      Services.service_bt_reader.uuid,
@@ -44,7 +42,7 @@ struct ContentView: View {
                     ReaderContainerView(cbPeripheral,
                                         bleReaderType: selection,
                                         properties: selection.adminProperties,
-                                        password: ADMINPASS) { readerSettings in
+                                        password: .admin) { readerSettings in
                         SharedFormView(readerSettings) {
                             switch selection {
                             case .deskReader:
