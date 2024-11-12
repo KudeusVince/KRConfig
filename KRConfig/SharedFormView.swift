@@ -83,7 +83,7 @@ struct SharedFormView<Content:View>: View {
                         readerSettings.deviceName = deviceName
                         readerManager.characteristicSetter(.deviceName(deviceName))
                     }) {
-                        Text(readerSettings.deviceName.isEmpty ? BLEReaderUI.parameters.title : readerSettings.deviceName)
+                        Text(readerSettings.deviceName)
                             .fontWeight(.semibold)
                             .contentShape(Rectangle())
                     }
